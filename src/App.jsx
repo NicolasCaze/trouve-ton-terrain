@@ -42,10 +42,11 @@ function App() {
 
       {Data && (
         <>
-        <p>{Data.name}</p>
-        <p>{Data.nom}</p>
-        <p>{Data.adresse}</p>
-        <p>{Data.status}</p>
+          <p>{Data.name}</p>
+          <p>{Data.nom}</p>
+          <p>{Data.adresse}</p>
+          <p>{Data.status}</p>
+        
         </>
         )}
 
