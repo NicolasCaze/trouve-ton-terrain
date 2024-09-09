@@ -7,7 +7,7 @@ function App() {
  const [errorInfo, setErrorInfo] = useState(null)
 
  useEffect(() => {
-  fetch('/api/explore/v2.1/catalog/datasets/data-es/records?limit=20&refine=inst_part_type_filter%3A%22Complexe%20sportif%22')
+  fetch('https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records?limit=20&refine=equip_type_famille%3A%22Terrain%20de%20grands%20jeux%22')
     .then(response => {
       console.log(response); // Affiche la réponse complète
       if(!response.ok) throw new Error(`Error ${response.status}, ${response.statusText}`);
