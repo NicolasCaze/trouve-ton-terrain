@@ -5,7 +5,12 @@ import 'leaflet/dist/leaflet.css';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import ListComplexe from "./components/list-complexe";
 
-//icônes
+import Header from "./components/header";
+import './App.css';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+// Correction pour les icônes
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: import('leaflet/dist/images/marker-icon-2x.png'),
@@ -27,8 +32,13 @@ function App() {
   const itemsPerPage = 10; 
   const timeoutRef = useRef(null);
   const defaultBounds = [41.0, -5.0, 51.0, 9.0]; 
-  const defaultCenter = [46.603354, 1.888334]; 
-  const defaultZoom = 6; 
+
+  const defaultCenter = [46.603354, 1.888334]; // Center of France
+  const defaultZoom = 6; // Default zoom level
+  const [selectedComplexe, setSelectedComplexe] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+
 
   const fetchComplexes = useCallback(async (bounds, limit = 1000) => {
     setIsLoading(true);
@@ -78,6 +88,31 @@ function App() {
     }
   }, []);
 
+
+  const handleCardClick = (complexe) => {
+    setSelectedComplexe(complexe);
+    setIsModalOpen(true);
+  };
+  
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  const Modal = ({ complexe, onClose }) => {
+    if (!complexe) return null;
+  
+    return (
+      <div className="modal-overlay">
+        <div className="modal-content">
+          <h2>{complexe.name}</h2>
+          <p><strong>Nom:</strong> {complexe.nom}</p>
+          <p><strong>Adresse:</strong> {complexe.adresse}</p>
+          <p><strong>Région:</strong> {complexe.region}</p>
+          <button onClick={onClose}>Fermer</button>
+        </div>
+      </div>
+    );
+  };
+  
   function MapEventHandler() {
     const map = useMapEvents({
       moveend: () => {
@@ -175,69 +210,87 @@ function App() {
   const handlePrevPage = () => setCurrentPage(prevPage => (prevPage > 1 ? prevPage - 1 : 1));
 
   return (
-    <main>
-      <h1>Complexes Sportifs</h1>
 
+    <main>
+    <Header searchResults={filteredComplexe} />
+  
+    <div className="app-container">
+      <h1 style={{ alignItems :"center", marginLeft :"40px"}}>Recherchez des complexes sportifs .............</h1>
+  
+      <div className="search-filter">
+        
+
+        <Row>
+        <Col md={4}>
+        <input style={ {height : "35px",width :"400px"} }
+          type="text"
+          value={searchItem}
+          onChange={handleInputChange}
+          placeholder="Rechercher un complexe sportif"
+        />
+        
+        </Col>
+        <Col md={{ span: 4, offset: 4 }}>
+        <select id="region-select" onChange={handleRegionChange} value={selectedRegion || ''}>
+          <option value=""> Choisissez une region </option>
+          {uniqueRegions.map((region, index) => (
+            <option key={index} value={region}>{region}</option>
+          ))}
+        </select>
+        </Col>
+      </Row>
+        
+      </div>
+  
       {isLoading && (
         <div>
           <p>Chargement en cours...</p>
           <progress value={progress} max="100" />
         </div>
       )}
-      <MapContainer center={defaultCenter} zoom={defaultZoom} style={{ height: "500px", width: "100%" }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-        />
-        <MapEventHandler />
-        <ZoomToRegion region={selectedRegion} defaultCenter={defaultCenter} defaultZoom={defaultZoom} />
-        <MarkerClusterGroup chunkedLoading>
-          {data.map((complexe, index) => (
-            <Marker key={index} position={[complexe.latitude, complexe.longitude]}>
-              <Popup>
-                <b>{complexe.name}</b><br />
-                {complexe.nom}<br />
-                {complexe.adresse}
-              </Popup>
-            </Marker>
-          ))}
-        </MarkerClusterGroup>
-      </MapContainer>
-
-      {errorInfo && (
-        <p className="error-information">{errorInfo}</p>
-      )}
-
-      <div>
-        <input
-          type="text"
-          value={searchItem}
-          onChange={handleInputChange}
-          placeholder="Rechercher un complexe sportif"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="region-select">Sélectionner une région:</label>
-        <select id="region-select" onChange={handleRegionChange} value={selectedRegion || ''}>
-          <option value="">-- Choisir une région --</option>
-          {uniqueRegions.map((region, index) => (
-            <option key={index} value={region}>{region}</option>
-          ))}
-        </select>
-      </div>
-
-      <ul>
+  
+    <div className="content-wrapper">
+      <div className="list-container mb-4" onClick={() => onClick(complexe)}>
         {currentComplexes.map((complexe, index) => (
-          <ListComplexe key={index} complexe={complexe} />
+          <div key={index} className="card">
+            <h3><strong> </strong>{complexe.nom}</h3>
+            <p><strong>Adresse: </strong>{complexe.adresse}</p>
+            <p><strong>Région: </strong>{complexe.region}</p>
+          </div>
         ))}
-      </ul>
-
-      <div>
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>Précédent</button>
-        <button onClick={handleNextPage} disabled={indexOfLastComplexe >= filteredComplexe.length}>Suivant</button>
       </div>
-    </main>
+      <div className="map-container">
+          <MapContainer  center={defaultCenter} zoom={defaultZoom} style={{ height: "250px", width: "100%", marginRight : "4px" }}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+            />
+            <MapEventHandler />
+            <ZoomToRegion region={selectedRegion} defaultCenter={defaultCenter} defaultZoom={defaultZoom} />
+            <MarkerClusterGroup chunkedLoading>
+              {data.map((complexe, index) => (
+                <Marker key={index} position={[complexe.latitude, complexe.longitude]}>
+                  <Popup>
+                    <b>{complexe.name}</b><br />
+                    {complexe.nom}<br />
+                    {complexe.adresse}
+                  </Popup>
+                </Marker>
+              ))}
+            </MarkerClusterGroup>
+          </MapContainer>
+      </div>
+    </div>
+
+    <div  className="pagination" >
+          <button onClick={handlePrevPage} disabled={currentPage === 1}>Précédent</button>
+          <button onClick={handleNextPage} disabled={indexOfLastComplexe >= filteredComplexe.length}>Suivant</button>
+     </div>
+    </div>
+    
+  </main>
+  
+  
   );
 }
 
