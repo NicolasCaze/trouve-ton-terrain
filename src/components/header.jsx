@@ -13,9 +13,10 @@ function Header() {
     navigate('/'); 
   };
   return (
-    <Navbar sticky="top" expand="lg" className="bg-body-tertiary mt-3 py-4" onClick={handleClick} style={{ cursor: 'pointer' }}>
+    <Navbar sticky="top" expand="lg" className="bg-body-tertiary mt-3 mb-4 py-4" style={{ color : "red"
+    }} >
       <Container>
-        <Navbar.Brand href="#home">Trouve ton terrain</Navbar.Brand>
+        <Navbar.Brand href="#home" onClick={handleClick} style={{ cursor: 'pointer' }}>Trouve ton terrain</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
       </Container>
     </Navbar>

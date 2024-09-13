@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useCallback, useRef, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet';
@@ -188,11 +189,13 @@ function App() {
     <Header searchResults={filteredComplexe} />
   
     <div className="app-container">
-      <h1 style={{ alignItems :"center", marginLeft :"40px"}}>Recherchez des complexes sportifs .............</h1>
-  
-      <div className="search-filter">
-        
+      <div className="title mb-4">
+       <h1 style={{ alignItems :"center", marginLeft :"30px"}}>À la recherche d'un complexe sportif ? </h1>
 
+        <h4>Cette application est conçue pour vous faciliter vos recherches de complexes sportifs</h4>
+        
+      </div>
+      <div className="search-filter">
         <Row>
         <Col md={4}>
         <input  style={ {height : "35px",width :"400px"} }
@@ -233,7 +236,7 @@ function App() {
         ))}
       </div>
       <div className="map-container">
-          <MapContainer  center={defaultCenter} zoom={defaultZoom} style={{ height: "250px", width: "100%", marginRight : "4px" }}>
+          <MapContainer  center={defaultCenter} zoom={defaultZoom} style={{ height : "250px", width : "100%", marginRight : "4px" }}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
