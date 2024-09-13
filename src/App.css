@@ -1,27 +1,27 @@
 .content-wrapper {
-    display: flex; /* Utiliser flexbox pour aligner les éléments sur la même ligne */
-    gap: 20px; /* Espacement entre la carte et la liste */
+    display: flex; 
+    gap: 20px; 
   }
   
 
   .list-container {
-    flex-basis: 70%; /* Prend 70% de la largeur */
-    max-height: 500px;
-    overflow-y: auto; /* Pour permettre le défilement si la liste est trop longue */
+    flex-basis: 70%; 
+    max-height : 500px;
+    overflow-y: auto; 
     display: flex;
-    flex-wrap: wrap; /* Permet d'afficher les résultats sous forme de cards */
-    gap: 20px; /* Espacement entre les cards */
+    flex-wrap: wrap; 
+    gap: 20px; 
   }
   
   .map-container {
     flex-basis: 30%; /* Prend 30% de la largeur */
-    height: 500px;
+    height : 500px;
   }
   main {
-    margin: 40px;
+    margin: 50px;
   }
   .card {
-    background-color: #f8f9fa;
+    background-color: #d8c495;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -39,10 +39,7 @@
     font-size: 14px;
   }
   
-  .title {
-    
-    align-items : center;
-  }
+
 
   .search-filter {
     display: flex;
@@ -64,4 +61,15 @@
     width : 400px;
     
   }
-  
+  .pagination button {
+    color: blue;
+    align-items: center;
+    margin-left : 3px;
+    border-radius: 30%;
+    size: 3px;
+   
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }

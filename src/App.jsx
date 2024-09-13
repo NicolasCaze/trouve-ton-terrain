@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState, useCallback, useRef, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import ListComplexe from "./components/list-complexe";
 import Header from "./components/header";
 import './App.css';
 import Row from 'react-bootstrap/Row';
@@ -35,8 +35,7 @@ function App() {
   const defaultBounds = [41.0, -5.0, 51.0, 9.0]; 
   const defaultCenter = [46.603354, 1.888334]; // Center of France
   const defaultZoom = 6; // Default zoom level
-  const [selectedComplexe, setSelectedComplexe] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   
 
   const fetchComplexes = useCallback(async (bounds, limit = 1000) => {
@@ -86,30 +85,7 @@ function App() {
   }, []);
 
 
-  const handleCardClick = (complexe) => {
-    setSelectedComplexe(complexe);
-    setIsModalOpen(true);
-  };
-  
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-  const Modal = ({ complexe, onClose }) => {
-    if (!complexe) return null;
-  
-    return (
-      <div className="modal-overlay">
-        <div className="modal-content">
-          <h2>{complexe.name}</h2>
-          <p><strong>Nom:</strong> {complexe.nom}</p>
-          <p><strong>Adresse:</strong> {complexe.adresse}</p>
-          <p><strong>Région:</strong> {complexe.region}</p>
-          <button onClick={onClose}>Fermer</button>
-        </div>
-      </div>
-    );
-  };
-  
+ 
   function MapEventHandler() {
     const map = useMapEvents({
       moveend: () => {
@@ -219,7 +195,7 @@ function App() {
 
         <Row>
         <Col md={4}>
-        <input style={ {height : "35px",width :"400px"} }
+        <input  style={ {height : "35px",width :"400px"} }
           type="text"
           value={searchItem}
           onChange={handleInputChange}
@@ -247,9 +223,9 @@ function App() {
       )}
   
     <div className="content-wrapper">
-      <div className="list-container mb-4" onClick={() => onClick(complexe)}>
+      <div className="list-container mb-4">
         {currentComplexes.map((complexe, index) => (
-          <div key={index} className="card">
+          <div key={index} className="card" style={{ flex: '1 1 calc(33% - 20px)', minWidth : '250px', boxSizing: 'border-box' }}>
             <h3><strong> </strong>{complexe.nom}</h3>
             <p><strong>Adresse: </strong>{complexe.adresse}</p>
             <p><strong>Région: </strong>{complexe.region}</p>
@@ -279,7 +255,7 @@ function App() {
       </div>
     </div>
 
-    <div  className="pagination" >
+    <div className="pagination mt-4">
           <button onClick={handlePrevPage} disabled={currentPage === 1}>Précédent</button>
           <button onClick={handleNextPage} disabled={indexOfLastComplexe >= filteredComplexe.length}>Suivant</button>
      </div>
