@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 export default function ModalContent({ closeModal, complexe }) {
   return (
@@ -20,13 +22,31 @@ export default function ModalContent({ closeModal, complexe }) {
         >
           X
         </button>
-        <h2 id="modal-title">Détails du complexe</h2>
-        <p><strong>ID:</strong> {complexe.id || 'Non disponible'}</p>
-        <p><strong>Nom:</strong> {complexe.nom || 'Non disponible'}</p>
-        <p><strong>Nom alternatif:</strong> {complexe.name || 'Non disponible'}</p>
+        <h2 id="modal-title">{complexe.nom || 'Non disponible'}</h2>
         <p><strong>Adresse:</strong> {complexe.adresse || 'Non disponible'}</p>
-        <p><strong>Latitude:</strong> {complexe.latitude || 'Non disponible'}</p>
-        <p><strong>Longitude:</strong> {complexe.longitude || 'Non disponible'}</p>
+        <p><strong>Status:</strong> 
+          { complexe.status ? 'Disponible' : 'Indisponible' }
+        </p>
+        <p><strong>Sport Proposé:</strong> {complexe.sport}</p>
+
+        {/* Ajout de la carte */}
+        <div style={{ height: '300px', width: '100%', marginTop: '20px' }}>
+          {complexe.latitude && complexe.longitude ? (
+            <MapContainer
+              center={[complexe.latitude, complexe.longitude]}
+              zoom={13}
+              style={{ height: '100%', width: '100%' }}
+            >
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+              />
+              <Marker position={[complexe.latitude, complexe.longitude]} />
+            </MapContainer>
+          ) : (
+            <p>Coordonnées non disponibles pour ce complexe.</p>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -41,5 +61,7 @@ ModalContent.propTypes = {
     name: PropTypes.string,
     latitude: PropTypes.number,
     longitude: PropTypes.number,
+    status: PropTypes.string,
+    sport: PropTypes.string,
   }).isRequired,
 };

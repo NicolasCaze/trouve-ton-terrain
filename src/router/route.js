@@ -7,7 +7,7 @@ export default function CreateRoute() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/detail/:id" element={<DetailComplexe />} />
-                <Route path="*" element={<NotFound />} />
+                {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
         </Router>
     );

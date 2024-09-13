@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import ListComplexe from "./components/list-complexe";
 
-// Correction pour les icônes
+//icônes
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: import('leaflet/dist/images/marker-icon-2x.png'),
@@ -23,15 +23,12 @@ function App() {
   const [searchItem, setSearchItem] = useState('');
   const [filteredComplexe, setFilteredComplexe] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState(null);
-  
-  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // Number of complexes per page
-
+  const itemsPerPage = 10; 
   const timeoutRef = useRef(null);
   const defaultBounds = [41.0, -5.0, 51.0, 9.0]; 
-  const defaultCenter = [46.603354, 1.888334]; // Center of France
-  const defaultZoom = 6; // Default zoom level
+  const defaultCenter = [46.603354, 1.888334]; 
+  const defaultZoom = 6; 
 
   const fetchComplexes = useCallback(async (bounds, limit = 1000) => {
     setIsLoading(true);
@@ -56,7 +53,9 @@ function App() {
                 name: result.inst_name || "Non renseigné",
                 latitude: result.coordonnees.lat,
                 longitude: result.coordonnees.lon,
-                region: result.reg_nom
+                region: result.reg_nom,
+                status : result.inst_actif,
+                sport : result.equip_type_name,
               };
             });
 
@@ -116,9 +115,9 @@ function App() {
           const bounds = L.latLngBounds(regionBounds);
           map.fitBounds(bounds);
         }
-      } else if (!region && map) {
-        // Revenir au centre et au zoom par défaut
-        map.setView(defaultCenter, defaultZoom);
+      // } else if (!region && map) {
+      //   // Revenir au centre et au zoom par défaut
+      //   map.setView(defaultCenter, defaultZoom);
       }
     }, [region, map, data, defaultCenter, defaultZoom]);
 

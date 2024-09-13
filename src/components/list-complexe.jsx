@@ -44,5 +44,6 @@ ListComplexe.propTypes = {
     name: PropTypes.string,
     latitude: PropTypes.number,
     longitude: PropTypes.number,
+    status: PropTypes.string,
   }).isRequired,
 };
