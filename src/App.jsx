@@ -89,29 +89,7 @@ function App() {
   }, []);
 
 
-  const handleCardClick = (complexe) => {
-    setSelectedComplexe(complexe);
-    setIsModalOpen(true);
-  };
   
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-  const Modal = ({ complexe, onClose }) => {
-    if (!complexe) return null;
-  
-    return (
-      <div className="modal-overlay">
-        <div className="modal-content">
-          <h2>{complexe.name}</h2>
-          <p><strong>Nom:</strong> {complexe.nom}</p>
-          <p><strong>Adresse:</strong> {complexe.adresse}</p>
-          <p><strong>Région:</strong> {complexe.region}</p>
-          <button onClick={onClose}>Fermer</button>
-        </div>
-      </div>
-    );
-  };
   
   function MapEventHandler() {
     const map = useMapEvents({
@@ -250,14 +228,12 @@ function App() {
       )}
   
     <div className="content-wrapper">
-      <div className="list-container mb-4" onClick={() => onClick(complexe)}>
+      <div className="list-container mb-4" >
+      <ul>
         {currentComplexes.map((complexe, index) => (
-          <div key={index} className="card">
-            <h3><strong> </strong>{complexe.nom}</h3>
-            <p><strong>Adresse: </strong>{complexe.adresse}</p>
-            <p><strong>Région: </strong>{complexe.region}</p>
-          </div>
+          <ListComplexe key={index} complexe={complexe} />
         ))}
+      </ul>
       </div>
       <div className="map-container">
           <MapContainer  center={defaultCenter} zoom={defaultZoom} style={{ height: "250px", width: "100%", marginRight : "4px" }}>
