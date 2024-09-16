@@ -23,6 +23,7 @@ function App() {
   const [cachedData, setCachedData] = useState([]);
   const [errorInfo, setErrorInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
   const [progress, setProgress] = useState(0);
   const [lastBounds, setLastBounds] = useState(null);
   const [searchItem, setSearchItem] = useState('');

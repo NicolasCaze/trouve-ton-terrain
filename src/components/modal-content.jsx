@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import Header from './header';
 import 'leaflet/dist/leaflet.css';
 
 export default function ModalContent({ closeModal, complexe }) {
@@ -15,6 +16,7 @@ export default function ModalContent({ closeModal, complexe }) {
         onClick={(e) => e.stopPropagation()}
         style={{ position: 'relative', width: '80%', margin: 'auto', background: 'white', padding: '20px', marginTop: '50px' }}
       >
+        <Header searchResults={[]} />
         <button
           type="button"
           onClick={closeModal}
