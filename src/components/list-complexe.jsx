@@ -1,7 +1,9 @@
 import { createPortal } from "react-dom";
 import ModalContent from "./modal-content.jsx";
 import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'
 import PropTypes from "prop-types";
+
 
 export default function ListComplexe({ complexe }) {
   const [showModal, setShowModal] = useState(false);
@@ -17,13 +19,16 @@ export default function ListComplexe({ complexe }) {
   };
 
   return (
-    <div>
-      <ul>
-        <li onClick={handleClick}>
-          <b>{complexe.nom || "Nom non disponible"}</b><br />
-          {complexe.adresse || "Adresse non disponible"}
-        </li>
-      </ul>
+    <>
+        <div className="card mb-4" style={{ flex: '1 1 calc(33% - 20px)', minWidth : '250px', boxSizing: 'border-box' }}>
+        <ul>
+          <li onClick={handleClick}>
+            <b>{complexe.nom || "Nom non disponible"}</b><br />
+            {complexe.adresse || "Adresse non disponible"}
+          </li>
+        </ul>
+      </div>
+
 
       {showModal && createPortal(
         <ModalContent 
@@ -32,7 +37,7 @@ export default function ListComplexe({ complexe }) {
         />,
         document.body
       )}
-    </div>
+    </>
   );
 }
 
