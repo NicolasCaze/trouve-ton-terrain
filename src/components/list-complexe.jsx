@@ -20,13 +20,15 @@ export default function ListComplexe({ complexe }) {
 
   return (
     <>
-        <div className="card mb-4" style={{ flex: '1 1 calc(33% - 20px)', minWidth : '250px', boxSizing: 'border-box' }}>
-        <ul>
-          <li onClick={handleClick}>
+       <div className="flex-container">
+        <div className="card-container">
+          <div className="card" onClick={handleClick}>
             <b>{complexe.nom || "Nom non disponible"}</b><br />
+            <p className="truncate-multi-line" >
             {complexe.adresse || "Adresse non disponible"}
-          </li>
-        </ul>
+              </p>
+          </div>
+        </div>
       </div>
 
 

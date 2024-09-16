@@ -1,46 +1,53 @@
+
+
 .content-wrapper {
-    display: flex; /* Utiliser flexbox pour aligner les éléments sur la même ligne */
-    gap: 20px; /* Espacement entre la carte et la liste */
+    display: flex; 
+    gap: 10px; 
   }
   
 
   .list-container {
-    flex-basis: 70%; /* Prend 70% de la largeur */
-    max-height: 500px;
-    overflow-y: auto; /* Pour permettre le défilement si la liste est trop longue */
     display: flex;
-    flex-wrap: wrap; /* Permet d'afficher les résultats sous forme de cards */
-    gap: 20px; /* Espacement entre les cards */
+    flex-wrap: wrap;
+    flex-basis: 70%;
+    justify-content: flex-start; 
+    gap: 20px; 
+    max-height : 500px;
+    overflow-y: auto;
   }
   
-  .map-container {
-    flex-basis: 30%; /* Prend 30% de la largeur */
-    height: 500px;
+  .card-container {
+    flex: 1 1 calc(33.333% - 20px); 
+    box-sizing: border-box;
+    margin-bottom : 20px;
+    display: flex; 
   }
-  main {
-    margin: 40px;
-  }
+  
   .card {
     background-color: #f8f9fa;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: calc(33.333% - 20px); /* 3 cards par ligne */
-    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    min-height : 150px; 
+    min-width : 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
   }
   
-  .card h3 {
-    margin: 0;
-    font-size: 18px;
-  }
   
-  .card p {
-    margin: 10px 0;
-    font-size: 14px;
+  .map-container {
+    flex-basis: 40%; 
+    height : 500px;
   }
+
+  main {
+    margin: 50px;
+  }
+ 
   
   .title {
-    
     align-items : center;
   }
 
@@ -64,4 +71,28 @@
     width : 400px;
     
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination button {
+    margin: 10px;
+    border-radius: 10px;
+    max-width : 200px;
+    background-color: aquamarine;
+    color: black;
+  }
+ 
+  @media (max-width: 992px) {
+    .card-container {
+      flex: 1 1 calc(50% - 20px); 
+    }
+  }
   
+  @media (max-width: 768px) {
+    .card-container {
+      flex: 1 1 100%; 
+    }
+  }

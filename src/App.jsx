@@ -228,15 +228,15 @@ function App() {
       )}
   
     <div className="content-wrapper">
-      <div className="list-container mb-4" >
-      <ul>
-        {currentComplexes.map((complexe, index) => (
-          <ListComplexe key={index} complexe={complexe} />
-        ))}
-      </ul>
+      <div className="list-container" >
+        
+          {currentComplexes.map((complexe, index) => (
+            <ListComplexe key={index} complexe={complexe} />
+          ))}
+        
       </div>
       <div className="map-container">
-          <MapContainer  center={defaultCenter} zoom={defaultZoom} style={{ height: "250px", width: "100%", marginRight : "4px" }}>
+          <MapContainer  center={defaultCenter} zoom={defaultZoom} style={{ height: "300px", width: "100%", marginRight : "4px" }}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
@@ -258,10 +258,10 @@ function App() {
       </div>
     </div>
 
-    <div  className="pagination" >
-          <button onClick={handlePrevPage} disabled={currentPage === 1}>Précédent</button>
-          <button onClick={handleNextPage} disabled={indexOfLastComplexe >= filteredComplexe.length}>Suivant</button>
-     </div>
+      <div className="pagination" >
+            <button onClick={handlePrevPage} disabled={currentPage === 1} >Précédent</button>
+            <button onClick={handleNextPage} disabled={indexOfLastComplexe >= filteredComplexe.length}>Suivant</button>
+      </div>
     </div>
     
   </main>
