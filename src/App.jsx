@@ -1,15 +1,16 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
 import { useState, useCallback, useRef, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import ListComplexe from "./components/list-complexe";
+
 import Header from "./components/header";
 import './App.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // Correction pour les icônes
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: import('leaflet/dist/images/marker-icon-2x.png'),
@@ -27,17 +28,17 @@ function App() {
   const [searchItem, setSearchItem] = useState('');
   const [filteredComplexe, setFilteredComplexe] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState(null);
-  
-  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // Number of complexes per page
-
+  const itemsPerPage = 10; 
   const timeoutRef = useRef(null);
   const defaultBounds = [41.0, -5.0, 51.0, 9.0]; 
+
   const defaultCenter = [46.603354, 1.888334]; // Center of France
   const defaultZoom = 6; // Default zoom level
-
+  const [selectedComplexe, setSelectedComplexe] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
+
 
   const fetchComplexes = useCallback(async (bounds, limit = 1000) => {
     setIsLoading(true);
@@ -62,7 +63,9 @@ function App() {
                 name: result.inst_name || "Non renseigné",
                 latitude: result.coordonnees.lat,
                 longitude: result.coordonnees.lon,
-                region: result.reg_nom
+                region: result.reg_nom,
+                status : result.inst_actif,
+                sport : result.equip_type_name,
               };
             });
 
@@ -86,7 +89,8 @@ function App() {
   }, []);
 
 
- 
+  
+  
   function MapEventHandler() {
     const map = useMapEvents({
       moveend: () => {
@@ -124,9 +128,9 @@ function App() {
           const bounds = L.latLngBounds(regionBounds);
           map.fitBounds(bounds);
         }
-      } else if (!region && map) {
-        // Revenir au centre et au zoom par défaut
-        map.setView(defaultCenter, defaultZoom);
+      // } else if (!region && map) {
+      //   // Revenir au centre et au zoom par défaut
+      //   map.setView(defaultCenter, defaultZoom);
       }
     }, [region, map, data, defaultCenter, defaultZoom]);
 
@@ -189,16 +193,14 @@ function App() {
     <Header searchResults={filteredComplexe} />
   
     <div className="app-container">
-      <div className="title mb-4">
-       <h1 style={{ alignItems :"center", marginLeft :"30px"}}>À la recherche d'un complexe sportif ? </h1>
-
-        <h4>Cette application est conçue pour vous faciliter vos recherches de complexes sportifs</h4>
-        
-      </div>
+      <h1 style={{ alignItems :"center", marginLeft :"40px"}}>Recherchez des complexes sportifs .............</h1>
+  
       <div className="search-filter">
+        
+
         <Row>
         <Col md={4}>
-        <input  style={ {height : "35px",width :"400px"} }
+        <input style={ {height : "35px",width :"400px"} }
           type="text"
           value={searchItem}
           onChange={handleInputChange}
@@ -226,17 +228,15 @@ function App() {
       )}
   
     <div className="content-wrapper">
-      <div className="list-container mb-4">
+      <div className="list-container mb-4" >
+      <ul>
         {currentComplexes.map((complexe, index) => (
-          <div key={index} className="card" style={{ flex: '1 1 calc(33% - 20px)', minWidth : '250px', boxSizing: 'border-box' }}>
-            <h3><strong> </strong>{complexe.nom}</h3>
-            <p><strong>Adresse: </strong>{complexe.adresse}</p>
-            <p><strong>Région: </strong>{complexe.region}</p>
-          </div>
+          <ListComplexe key={index} complexe={complexe} />
         ))}
+      </ul>
       </div>
       <div className="map-container">
-          <MapContainer  center={defaultCenter} zoom={defaultZoom} style={{ height : "250px", width : "100%", marginRight : "4px" }}>
+          <MapContainer  center={defaultCenter} zoom={defaultZoom} style={{ height: "250px", width: "100%", marginRight : "4px" }}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
@@ -258,7 +258,7 @@ function App() {
       </div>
     </div>
 
-    <div className="pagination mt-4">
+    <div  className="pagination" >
           <button onClick={handlePrevPage} disabled={currentPage === 1}>Précédent</button>
           <button onClick={handleNextPage} disabled={indexOfLastComplexe >= filteredComplexe.length}>Suivant</button>
      </div>
