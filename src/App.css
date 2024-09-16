@@ -1,67 +1,65 @@
 .content-wrapper {
-    display: flex; /* Utiliser flexbox pour aligner les éléments sur la même ligne */
-    gap: 20px; /* Espacement entre la carte et la liste */
-  }
-  
+  display: flex; /* Utiliser flexbox pour aligner les éléments sur la même ligne */
+  gap: 20px; /* Espacement entre la carte et la liste */
+}
 
-  .list-container {
-    flex-basis: 70%; /* Prend 70% de la largeur */
-    max-height: 500px;
-    overflow-y: auto; /* Pour permettre le défilement si la liste est trop longue */
-    display: flex;
-    flex-wrap: wrap; /* Permet d'afficher les résultats sous forme de cards */
-    gap: 20px; /* Espacement entre les cards */
-  }
-  
-  .map-container {
-    flex-basis: 30%; /* Prend 30% de la largeur */
-    height: 500px;
-  }
-  main {
-    margin: 40px;
-  }
-  .card {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: calc(33.333% - 20px); /* 3 cards par ligne */
-    box-sizing: border-box;
-  }
-  
-  .card h3 {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .card p {
-    margin: 10px 0;
-    font-size: 14px;
-  }
-  
-  .title {
-    
-    align-items : center;
-  }
+.list-container {
+  flex-basis: 70%; /* Prend 70% de la largeur */
+  max-height: 500px;
+  overflow-y: auto; /* Pour permettre le défilement si la liste est trop longue */
+  display: flex;
+  flex-wrap: wrap; /* Permet d'afficher les résultats sous forme de cards */
+  gap: 20px; /* Espacement entre les cards */
+}
 
-  .search-filter {
-    display: flex;
-    flex-direction: row; 
-    justify-content: center; 
-    align-items: center; 
-    margin-top : 20px;
-    margin-bottom : 40px; 
-  }
-  
-  .search-filter input {
-    height : 35px;
-    width : 400px;
-    margin-bottom : 8px; 
-  }
-  
-  .search-filter select {
-    height : 35px;
-    width : 400px;
-    
-  }
-  
+.map-container {
+  flex-basis: 30%; /* Prend 30% de la largeur */
+  height: 500px;
+}
+main {
+  margin: 40px;
+}
+.card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(33.333% - 20px); /* 3 cards par ligne */
+  box-sizing: border-box;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.title {
+  align-items: center;
+}
+
+.search-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.search-filter input {
+  height: 35px;
+  width: 400px;
+  margin-bottom: 8px;
+}
+
+.search-filter select {
+  height: 35px;
+  width: 400px;
+}
+
+/* LA PARTIE QUI SUIT EST A AJOUTER */
