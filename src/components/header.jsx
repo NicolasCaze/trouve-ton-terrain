@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 
 function Header({ searchResults }) {
   return (
-    <Navbar sticky="top" expand="lg" className="bg-body-tertiary mt-3 py-4">
+    <Navbar expand="lg" className="bg-body-tertiary mt-3 py-4 mb-5" >
       <Container>
         <Navbar.Brand href="#home">Trouve ton terrain</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
