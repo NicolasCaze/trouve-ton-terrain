@@ -29,11 +29,11 @@ function Header({ searchResults }) {
         <img
           src={logo}
           alt=""
-          className="w-52 hover:scale-105 transition-all"
+          className="w-52 hover:scale-105 transition-al"
         />
       </a>
 
-      <ul className="hidden xl:flex items-center gap-12 font-semibold text-base">
+      <ul className="idden xl:flex items-center gap-12 font-semibold text-base">
         <li className="p-3 hover:bg-sky-400 hover:text-white rounded-md transition-all cursor-pointeur">
           <a>Accueil</a>
         </li>
