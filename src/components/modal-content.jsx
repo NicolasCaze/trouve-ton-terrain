@@ -41,6 +41,8 @@ export default function ModalContent({ closeModal, complexe }) {
             marginBottom: '20px',
           }}
         >
+
+          
           <Header
             searchResults={[]}
             style={{
