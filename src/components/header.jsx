@@ -49,9 +49,29 @@ function Header({ searchResults }) {
         <img
           src={logo}
           alt="Logo"
-          className="w-24 ml-8 hover:scale-105 transition-all"
+          className="w-24 ml-8 hover:scale-105 transition-al"
         />
       </a>
+
+      <ul className="idden xl:flex items-center gap-12 font-semibold text-base">
+        <li className="p-3 hover:bg-sky-400 hover:text-white rounded-md transition-all cursor-pointeur">
+          <a>Accueil</a>
+        </li>
+        <li>
+          <a>Services</a>
+        </li>
+        <li>
+          <a>Contact</a>
+        </li>
+        <li>
+          <a className="p-3 hover:bg-sky-400 hover:text-white rounded-md transition-all">
+            A propos
+          </a>
+        </li>
+      </ul>
+
+      <div className="relative hidden md:flex items-center justify-center gap-3"></div>
+    </header>
       <div className="flex justify-center items-center bg-teal-200 drop-shadow-md rounded-lg shadow-lg p-4 mr-7">
         <h1 className="text-center mr-10 ">
           <motion.span
