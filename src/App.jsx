@@ -230,10 +230,6 @@ function App() {
       />
 
       <div className="app-container">
-        <h1 style={{ alignItems: "center", marginLeft: "40px" }}>
-          Recherchez des complexes sportifs .............
-        </h1>
-
         <div className="search-filter">
           <Row>
             <Col md={4}>

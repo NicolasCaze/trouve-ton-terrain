@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mui/material": "^6.0.2",
+    "framer-motion": "^11.5.4",
     "headlessui": "^0.0.0",
     "heroicons": "^2.1.5",
     "leaflet": "^1.9.4",
@@ -23,6 +24,7 @@
     "react-leaflet-cluster": "^2.1.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.26.1",
+    "react-simple-typewriter": "^5.0.1",
     "yarn": "^1.22.22"
   },
   "devDependencies": {
