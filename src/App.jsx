@@ -11,9 +11,9 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import ListComplexe from "./components/list-complexe";
+import "./App.css";
 
 import Header from "./components/header";
-import "./App.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 // Correction pour les icônes
@@ -30,6 +30,7 @@ function App() {
   const [cachedData, setCachedData] = useState([]);
   const [errorInfo, setErrorInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
   const [progress, setProgress] = useState(0);
   const [lastBounds, setLastBounds] = useState(null);
   const [searchItem, setSearchItem] = useState("");
@@ -269,18 +270,16 @@ function App() {
         )}
 
         <div className="content-wrapper">
-          <div className="list-container mb-4">
-            <ul>
-              {currentComplexes.map((complexe, index) => (
-                <ListComplexe key={index} complexe={complexe} />
-              ))}
-            </ul>
+          <div className="list-container">
+            {currentComplexes.map((complexe, index) => (
+              <ListComplexe key={index} complexe={complexe} />
+            ))}
           </div>
           <div className="map-container">
             <MapContainer
               center={defaultCenter}
               zoom={defaultZoom}
-              style={{ height: "250px", width: "100%", marginRight: "4px" }}
+              style={{ height: "300px", width: "100%", marginRight: "4px" }}
             >
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
