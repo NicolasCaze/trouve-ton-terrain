@@ -44,18 +44,19 @@ function Header({ searchResults }) {
     },
   };
   return (
-    <div className="flex justify-between items-center text-black py-4 bg-teal-100 drop-shadow-xl rounded-2xl shadow-lg">
+    <div>
+      
       <a href="/">
-        <img
+        <img 
           src={logo}
           alt="Logo"
-          className="w-24 ml-8 hover:scale-105 transition-al"
+          className=" absolute top w-24 ml-8 hover:scale-105 transition-al"
         />
       </a>
 
       <div className="relative hidden md:flex items-center justify-center gap-3"></div>
 
-      <div className="flex justify-center items-center bg-teal-200 drop-shadow-md rounded-lg shadow-lg p-4 mr-7">
+      {/* <div className="flex justify-center items-center bg-teal-200 drop-shadow-md rounded-lg shadow-lg p-4 mr-7">
         <h1 className="text-center mr-10 ">
           <motion.span
             className="inline-block"
@@ -72,7 +73,7 @@ function Header({ searchResults }) {
               ))}
           </motion.span>
         </h1>
-      </div>
+      </div> */}
     </div>
   );
 }

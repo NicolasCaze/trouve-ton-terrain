@@ -1,14 +1,9 @@
-body {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f2f5f8;
-}
+
 
 .content-wrapper {
   display: flex;
   gap: 10px;
+  margin: 40px;
 }
 
 .list-container {
@@ -46,33 +41,39 @@ body {
   height: 500px;
 }
 
-main {
-  margin: 50px;
-  border-radius: 10px;
-}
-
 .title {
   align-items: center;
 }
-
 .search-filter {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  position: absolute; 
+  top: 20%; 
+  left: 70%; 
+  transform: translateX(-50%);
+  z-index: 10; 
+  padding: 10px;
+  border-radius: 5px;
+  width: 50%;
 }
 
-.search-filter input {
-  height: 35px;
-  width: 400px;
-  margin-bottom: 8px;
+.search-filter input{
+  background-color: black;
+  color: #f8f9fa;
 }
-
 .search-filter select {
-  height: 35px;
-  width: 400px;
+  margin: 5px 0;
+  padding: 5px;
+}
+.search-filter input::placeholder {
+  color: white;
+  opacity: 0.7;
+  z-index: 10;
+}
+
+.search-filter input:focus,
+.search-filter select:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.2); 
+  z-index: 10;
 }
 
 .pagination {
@@ -81,11 +82,63 @@ main {
 }
 
 .pagination button {
-  margin: 10px;
+  margin: 5px;
   border-radius: 10px;
-  max-width: 200px;
+  width: 100px;
   background-color: aquamarine;
   color: black;
+}
+.header-content {
+  position: relative;
+  top : 20%; 
+  left : 50%;
+  transform: translateX(-50%);
+  color: white;
+  z-index: 3; 
+  text-align: center;
+}
+.logo  {
+  position: relative;
+}
+.custom-hr {
+  border: 2px solid rgb(238, 230, 230);
+  width : 80%;
+  margin: 20px auto;
+  opacity: 0.8;
+  position: absolute;
+  z-index: 2;
+  top : 30%;
+  left : 10%
+}
+.description-text {
+  color: white;
+  text-align: center;
+  font-size: 2.2rem;
+  margin-top : 20px;
+  z-index: 2;
+  position: absolute;
+  opacity: 0.9;
+  top : 37%;
+  font-weight: 500;
+  left: 20%;
+  
+}
+/* Card équipe */
+.team-card {
+  width: 300px;
+  border: 1px solid #403030;
+  border-radius: 8px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom : 20px;
+  padding: 15px;
+}
+.team {
+  width: 90%;
+  display: flex;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  gap: 20px;
 }
 
 @media (max-width: 992px) {

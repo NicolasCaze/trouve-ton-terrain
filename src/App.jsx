@@ -12,10 +12,11 @@ import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import ListComplexe from "./components/list-complexe";
 import "./App.css";
+import Equipe from "./components/equipe";
+import Footer from "./components/footer";
 
 import Header from "./components/header";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 // Correction pour les icônes
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -221,21 +222,22 @@ function App() {
   return (
     <main>
       {/*<Header searchResults={filteredComplexe} />*/}
-      <Header
-        searchResults={filteredComplexe}
-        handleInputChange={handleInputChange}
-        uniqueRegions={uniqueRegions}
-        selectedRegion={selectedRegion}
-        handleRegionChange={handleRegionChange}
-      />
-
-      <div className="app-container">
-        <div className="background-image"></div>
+      <div className="background-image">
         <div className="overlay"></div>
+          <div className="header-content">
+            <Header
+              searchResults={filteredComplexe}
+              handleInputChange={handleInputChange}
+              uniqueRegions={uniqueRegions}
+              selectedRegion={selectedRegion}
+              handleRegionChange={handleRegionChange}
+            />
+          </div>
+
+      </div>
+      <div className="app-container">
 
         <div className="search-filter">
-          <Row>
-            <Col md={4}>
               <input
                 style={{ height: "35px", width: "400px" }}
                 type="text"
@@ -243,8 +245,6 @@ function App() {
                 onChange={handleInputChange}
                 placeholder="Rechercher un complexe sportif"
               />
-            </Col>
-            <Col md={{ span: 4, offset: 4 }}>
               <select
                 id="region-select"
                 onChange={handleRegionChange}
@@ -257,10 +257,18 @@ function App() {
                   </option>
                 ))}
               </select>
-            </Col>
-          </Row>
         </div>
 
+        {/* Texte visible sous l'image */}
+        <hr className="custom-hr" />
+
+        <p className="description-text">
+         <h1>
+         Découvrez votre prochain complexe sportif en <br />
+          un clin d'œil avec YSportMap, votre guide interactif des terrains de sport. <br />
+           Pour des activités près de chez vous !
+         </h1>
+        </p>
         {isLoading && (
           <div>
             <p>Chargement en cours...</p>
@@ -321,6 +329,33 @@ function App() {
             Suivant
           </button>
         </div>
+        <div className="team">
+                <Equipe 
+                nom={"Nico"} 
+                fonction = "developpeur"
+                avatar={"../assets/adventurer-1726698584777.png"}
+                description={"zkenjnjkcjkjnjkdjdc"}
+                />
+                <Equipe 
+                nom={"Miryam"} 
+                fonction = "developpeur"
+                avatar={"../assets/adventurer-1726698584777.png"}
+                description={"zkenjnjkcjkjnjkdjdc"}
+                />
+                <Equipe 
+                nom={"Felix"} 
+                fonction = "developpeur"
+                avatar={"../assets/adventurer-1726698584777.png"}
+                description={"zkenjnjkcjkjnjkdjdc"}
+                />
+                <Equipe 
+                nom={"Asma"} 
+                fonction = "developpeur"
+                avatar={"../assets/adventurer-1726698584777.png"}
+                description={"zkenjnjkcjkjnjkdjdc"}
+                />
+        </div>
+          <Footer />
       </div>
     </main>
   );
