@@ -230,6 +230,9 @@ function App() {
       />
 
       <div className="app-container">
+        <div className="background-image"></div>
+        <div className="overlay"></div>
+
         <div className="search-filter">
           <Row>
             <Col md={4}>
