@@ -51,31 +51,9 @@ function Header({ searchResults }) {
         <img 
           src={logo}
           alt="Logo"
-          className=" absolute top w-24 ml-8 hover:scale-105 transition-al"
+          className="absolute top-0 left-0 w-40 ml-2 hover:scale-105 transition-all"
         />
       </a>
-
-      
-      <div className="relative hidden md:flex items-center justify-center gap-3"></div>
-
-      {/* <div className="flex justify-center items-center bg-teal-200 drop-shadow-md rounded-lg shadow-lg p-4 mr-7">
-        <h1 className="text-center mr-10 ">
-          <motion.span
-            className="inline-block"
-            variants={sentence}
-            initial="hidden"
-            animate="visible"
-          >
-            {"Découvrez votre prochain complexe sportif en un clin d'œil avec YSportMap, votre guide interactif des terrains de sport. Pour des activités près de chez vous !"
-              .split("")
-              .map((char, index) => (
-                <motion.span key={index} variants={letter}>
-                  {char}
-                </motion.span>
-              ))}
-          </motion.span>
-        </h1>
-      </div> */}
     </div>
   );
 }

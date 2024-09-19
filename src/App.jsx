@@ -12,16 +12,51 @@ import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import ListComplexe from "./components/list-complexe";
 import "./App.css";
-import Equipe from "./components/equipe";
+import TeamCarousel from "./components/equipe";
 import Footer from "./components/footer";
 import Mimi from './assets/mimy.png';
 import felix from './assets/felix.png';
 import Nico from './assets/adventurer-1726698584777.png';
 import Asma from './assets/asma.png';
-import Carousel from 'react-bootstrap/Carousel'
+import Foot from './assets/terrain-tennis.jpg'
 import {Row, Col} from 'react-bootstrap'
 import Header from "./components/header";
+import CarouselImages  from "./components/caroussel";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+const teamMembers = [
+  {
+    nom: "Nico",
+    fonction: "Développeur",
+    avatar: Nico,
+    description: "Spécialiste en développement Back."
+  },
+  {
+    nom: "Mimy",
+    fonction: "Designer",
+    avatar: Mimi,
+    description: "Dev front end, design avec Figma"
+  },
+  {
+    nom: "Felix",
+    fonction: "Developpeur Front",
+    avatar: felix,
+    description: "Dev front end"
+  },
+  {
+    nom: "Petru",
+    fonction: "Data scientist",
+    avatar: Asma,
+    description: "Dev data"
+  },
+  {
+    nom: "Asma",
+    fonction: "Developpeur front",
+    avatar: Asma,
+    description: "Dev front"
+  }
+  
+];
 
 // Correction pour les icônes
 
@@ -227,64 +262,20 @@ function App() {
 
   return (
     <main>
-      {/*<Header searchResults={filteredComplexe} />*/}
-          {/* Carousel Section */}
-          <div className="carousel-section">
-        <Carousel>
-          {/* Première image */}
-          <Carousel.Item interval={2000}>
-            <img
-              className="d-block"
-              src="./assets/image-badminton.png"
-              alt="First slide"
-            
-            />
-            <Carousel.Caption>
-              <h3>First Slide</h3>
-              <p>Discover amazing sports complexes near you!</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          {/* Deuxième image */}
-          <Carousel.Item interval={2000}>
-            <img
-              className="d-block"
-              src="/path-to-your-second-image.jpg"
-              alt="Second slide"
-           
-            />
-            <Carousel.Caption>
-              <h3>Second Slide</h3>
-              <p>Your guide to sports venues around the country!</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          {/* Troisième image */}
-          <Carousel.Item interval={2000}>
-            <img
-              className="d-block"
-              src="/path-to-your-third-image.jpg"
-              alt="Third slide"
-              
-            />
-            <Carousel.Caption>
-              <h3>Third Slide</h3>
-              <p>Find your next sports adventure easily!</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
-
-        {/* Votre contenu du Header sous le carousel */}
-        <div className="header-content">
+     
+      <div className="header-content">
           <Header
-            searchResults={filteredComplexe}
-            handleInputChange={handleInputChange}
-            uniqueRegions={uniqueRegions}
-            selectedRegion={selectedRegion}
-            handleRegionChange={handleRegionChange}
           />
         </div>
+          {/* Carousel Section */}
+          <div className="relative carousel-section">
+            <CarouselImages 
+             src1={"https://www.agn-avocats.fr/wp-content/uploads/2020/02/football-stadium-shiny-lights-view-from-field-PWS5ZD9-2048x1024.jpg"}
+             src2={"https://media.istockphoto.com/photos/volleyball-stadium-picture-id1216739474?k=6&m=1216739474&s=170667a&w=0&h=xAIsLGuvZxUKRIiutXv0G28JOQo5Q90KxdszDUN5KU0="}
+             src3={"https://ussa.fr/assets/img/icon-discipline/header-badminton.png"}
+            />        
            </div>
+
       <div className="app-container">
 
         <div className="search-filter">
@@ -380,37 +371,9 @@ function App() {
           </button>
         </div>
         <div className="team">
-          <h2> NOTRE EQUIPE</h2>
-          <Row>
-          <Equipe 
-                nom={"Nico"} 
-                fonction = "developpeur"
-                avatar={Nico}
-                description={"zkenjnjkcjkjnjkdjdc"}
-                />
-                <Equipe 
-                nom={"Miryam"} 
-                fonction = "developpeur"
-                avatar={Mimi}
-                description={"zkenjnjkcjkjnjkdjdc"}
-                />
-          </Row>
-            
-          <Row>
-          <Equipe 
-                nom={"Felix"} 
-                fonction = "developpeur"
-                avatar={felix}
-                description={"zkenjnjkcjkjnjkdjdc"}
-                />
-                <Equipe 
-                nom={"Petro"} 
-                fonction = "developpeur"
-                avatar={Asma}
-                description={"zkenjnjkcjkjnjkdjdc"}
-                />
-          </Row>
-               
+          <h2 style={{textAlign :"center", marginBottom : "40px", marginTop:"20px"}}> NOTRE EQUIPE</h2>
+          <p style={{textAlign :"center", marginBottom : "15px"}}>Les sans nom</p>
+          <TeamCarousel teamMembers={teamMembers} />
         </div>
           <Footer />
       </div>
