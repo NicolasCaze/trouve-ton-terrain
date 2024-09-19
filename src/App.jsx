@@ -20,9 +20,8 @@ import Nico from './assets/adventurer-1726698584777.png';
 import Asma from './assets/asma.png';
 import Carousel from 'react-bootstrap/Carousel'
 import {Row, Col} from 'react-bootstrap'
-
-
 import Header from "./components/header";
+
 
 // Correction pour les icônes
 
@@ -236,7 +235,7 @@ function App() {
           <Carousel.Item interval={2000}>
             <img
               className="d-block"
-              src="/path-to-your-first-image.jpg"
+              src="./assets/image-badminton.png"
               alt="First slide"
             
             />

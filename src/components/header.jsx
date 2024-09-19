@@ -18,6 +18,7 @@ function Header({ searchResults }) {
 }
 
 export default Header;*/
+import CarouselImages from '../components/caroussel';
 import logo from "../assets/logo-bootcamp.png";
 import "../index.css";
 import { motion } from "framer-motion";
@@ -54,6 +55,7 @@ function Header({ searchResults }) {
         />
       </a>
 
+      
       <div className="relative hidden md:flex items-center justify-center gap-3"></div>
 
       {/* <div className="flex justify-center items-center bg-teal-200 drop-shadow-md rounded-lg shadow-lg p-4 mr-7">
