@@ -9,11 +9,11 @@ export default function ModalContent({ closeModal, complexe }) {
       onClick={closeModal}
       style={{
         position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        top : 0,
+        left : 0,
+        width : "100%",
+        height : "100%",
+        backgroundColor: "rgba(0, 0, 0, 0)",
         zIndex: 1000,
       }}
       aria-labelledby="modal-title"
@@ -48,7 +48,7 @@ export default function ModalContent({ closeModal, complexe }) {
               position: "absolute",
               top: "10px",
               right: "10px",
-              background: "red",
+              background: "grey",
               color: "white",
               border: "none",
               borderRadius: "50%",
@@ -63,7 +63,9 @@ export default function ModalContent({ closeModal, complexe }) {
             X
           </button>
         </div>
-
+        <h1  style={{ fontWeight: "bold", marginBottom: "20px" , textAlign :"center" , fontSize: "2.5rem"}}>
+          {complexe.nom || "Non disponible"}
+        </h1>
         <div
           style={{
             display: "flex",
@@ -71,12 +73,13 @@ export default function ModalContent({ closeModal, complexe }) {
             justifyContent: "space-between",
             alignItems: "flex-start",
             height: "500px",
-            marginTop: "20px",
+            margin: "50px",
+            
           }}
         >
+          
           {/* Détails du complexe */}
           <div style={{ flex: "2", marginRight: "20px" }}>
-            <h2 id="modal-title">{complexe.nom || "Non disponible"}</h2>
             <p>
               <strong>Adresse:</strong> {complexe.adresse || "Non disponible"}
             </p>

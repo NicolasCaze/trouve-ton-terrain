@@ -12,10 +12,18 @@ import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import ListComplexe from "./components/list-complexe";
 import "./App.css";
+import Equipe from "./components/equipe";
+import Footer from "./components/footer";
+import Mimi from './assets/mimy.png';
+import felix from './assets/felix.png';
+import Nico from './assets/adventurer-1726698584777.png';
+import Asma from './assets/asma.png';
+import Carousel from 'react-bootstrap/Carousel'
+import {Row, Col} from 'react-bootstrap'
+
 
 import Header from "./components/header";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 // Correction pour les icônes
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -221,30 +229,73 @@ function App() {
   return (
     <main>
       {/*<Header searchResults={filteredComplexe} />*/}
-      <Header
-        searchResults={filteredComplexe}
-        handleInputChange={handleInputChange}
-        uniqueRegions={uniqueRegions}
-        selectedRegion={selectedRegion}
-        handleRegionChange={handleRegionChange}
-      />
+          {/* Carousel Section */}
+          <div className="carousel-section">
+        <Carousel>
+          {/* Première image */}
+          <Carousel.Item interval={2000}>
+            <img
+              className="d-block"
+              src="/path-to-your-first-image.jpg"
+              alt="First slide"
+            
+            />
+            <Carousel.Caption>
+              <h3>First Slide</h3>
+              <p>Discover amazing sports complexes near you!</p>
+            </Carousel.Caption>
+          </Carousel.Item>
 
+          {/* Deuxième image */}
+          <Carousel.Item interval={2000}>
+            <img
+              className="d-block"
+              src="/path-to-your-second-image.jpg"
+              alt="Second slide"
+           
+            />
+            <Carousel.Caption>
+              <h3>Second Slide</h3>
+              <p>Your guide to sports venues around the country!</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+
+          {/* Troisième image */}
+          <Carousel.Item interval={2000}>
+            <img
+              className="d-block"
+              src="/path-to-your-third-image.jpg"
+              alt="Third slide"
+              
+            />
+            <Carousel.Caption>
+              <h3>Third Slide</h3>
+              <p>Find your next sports adventure easily!</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+
+        {/* Votre contenu du Header sous le carousel */}
+        <div className="header-content">
+          <Header
+            searchResults={filteredComplexe}
+            handleInputChange={handleInputChange}
+            uniqueRegions={uniqueRegions}
+            selectedRegion={selectedRegion}
+            handleRegionChange={handleRegionChange}
+          />
+        </div>
+           </div>
       <div className="app-container">
-        <div className="background-image"></div>
-        <div className="overlay"></div>
 
         <div className="search-filter">
-          <Row>
-            <Col md={4}>
               <input
-                style={{ height: "35px", width: "400px" }}
+                style={{ height: "35px", width : "400px" }}
                 type="text"
                 value={searchItem}
                 onChange={handleInputChange}
                 placeholder="Rechercher un complexe sportif"
               />
-            </Col>
-            <Col md={{ span: 4, offset: 4 }}>
               <select
                 id="region-select"
                 onChange={handleRegionChange}
@@ -257,10 +308,18 @@ function App() {
                   </option>
                 ))}
               </select>
-            </Col>
-          </Row>
         </div>
 
+        {/* Texte visible sous l'image */}
+        <hr className="custom-hr" />
+
+        <p className="description-text">
+         <h1>
+         Découvrez votre prochain complexe sportif en <br />
+          un clin d'œil avec YSportMap, votre guide interactif des terrains de sport. <br />
+           Pour des activités près de chez vous !
+         </h1>
+        </p>
         {isLoading && (
           <div>
             <p>Chargement en cours...</p>
@@ -321,6 +380,40 @@ function App() {
             Suivant
           </button>
         </div>
+        <div className="team">
+          <h2> NOTRE EQUIPE</h2>
+          <Row>
+          <Equipe 
+                nom={"Nico"} 
+                fonction = "developpeur"
+                avatar={Nico}
+                description={"zkenjnjkcjkjnjkdjdc"}
+                />
+                <Equipe 
+                nom={"Miryam"} 
+                fonction = "developpeur"
+                avatar={Mimi}
+                description={"zkenjnjkcjkjnjkdjdc"}
+                />
+          </Row>
+            
+          <Row>
+          <Equipe 
+                nom={"Felix"} 
+                fonction = "developpeur"
+                avatar={felix}
+                description={"zkenjnjkcjkjnjkdjdc"}
+                />
+                <Equipe 
+                nom={"Petro"} 
+                fonction = "developpeur"
+                avatar={Asma}
+                description={"zkenjnjkcjkjnjkdjdc"}
+                />
+          </Row>
+               
+        </div>
+          <Footer />
       </div>
     </main>
   );
