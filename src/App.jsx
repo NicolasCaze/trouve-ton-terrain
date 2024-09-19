@@ -14,6 +14,12 @@ import ListComplexe from "./components/list-complexe";
 import "./App.css";
 import Equipe from "./components/equipe";
 import Footer from "./components/footer";
+import Mimi from './assets/mimy.png';
+import felix from './assets/felix.png';
+import Nico from './assets/adventurer-1726698584777.png';
+import Asma from './assets/asma.png';
+import {Row,Col} from 'react-bootstrap'
+
 
 import Header from "./components/header";
 
@@ -330,30 +336,36 @@ function App() {
           </button>
         </div>
         <div className="team">
-                <Equipe 
+          <Row>
+          <Equipe 
                 nom={"Nico"} 
                 fonction = "developpeur"
-                avatar={"../assets/adventurer-1726698584777.png"}
+                avatar={Nico}
                 description={"zkenjnjkcjkjnjkdjdc"}
                 />
                 <Equipe 
                 nom={"Miryam"} 
                 fonction = "developpeur"
-                avatar={"../assets/adventurer-1726698584777.png"}
+                avatar={Mimi}
                 description={"zkenjnjkcjkjnjkdjdc"}
                 />
-                <Equipe 
+          </Row>
+            
+          <Row>
+          <Equipe 
                 nom={"Felix"} 
                 fonction = "developpeur"
-                avatar={"../assets/adventurer-1726698584777.png"}
+                avatar={felix}
                 description={"zkenjnjkcjkjnjkdjdc"}
                 />
                 <Equipe 
                 nom={"Asma"} 
                 fonction = "developpeur"
-                avatar={"../assets/adventurer-1726698584777.png"}
+                avatar={Asma}
                 description={"zkenjnjkcjkjnjkdjdc"}
                 />
+          </Row>
+               
         </div>
           <Footer />
       </div>

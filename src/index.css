@@ -14,19 +14,20 @@
   position: relative; 
   z-index: 1;
 }
+
 body {
-  background-color: rgba(199, 191, 191, 0.624);
-  
+  background-color: rgba(255, 255, 255, 0.624);
   padding: 0%;
 }
 
+
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 40vh;
-  background: rgba(0, 0, 0, 0.5); 
+  top : 0;
+  left : 0;
+  width : 100%;
+  height : 40vh;
+  background: rgba(0, 0, 0, 0); 
   z-index: 1; 
 }
 
@@ -36,24 +37,19 @@ a {
 
 /* Avatar */
 .avatar {
-  width: 50px;
-  height: 50px;
+  width :  50px;
+  height : 50px;
   border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 2px;
 }
 
-/* Nom de l'équipe */
-.team-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+.team-function {
+  top: 4%;
+  margin-left: 50px;
+  text-transform: uppercase;
 }
 
-/* Description */
-.team-description {
-  font-size: 0.9rem;
-  color: #555;
-}
 
 
 /* Footer */
@@ -61,26 +57,26 @@ a {
   background-color: #5155dd;
   padding: 20px 0;
   text-align: center;
-  margin-top: 50px;
+  margin-top : 50px;
   position: relative;
-  height: 180px;
+  height : 180px;
 }
 
 .footer-content {
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height : 150px;
   align-items: center;
 }
 
 .footer-logo {
-  margin-bottom: 10px;
-  left: 20px;
+  margin-bottom : 10px;
+  left : 20px;
   position: absolute;
 }
 
 .footer-logo-img {
-  width: 100px; 
+  width : 100px; 
 }
 
 .footer-socials {
