@@ -13,7 +13,7 @@ export default function ModalContent({ closeModal, complexe }) {
         left : 0,
         width : "100%",
         height : "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "rgba(0, 0, 0, 0)",
         zIndex: 1000,
       }}
       aria-labelledby="modal-title"
@@ -48,7 +48,7 @@ export default function ModalContent({ closeModal, complexe }) {
               position: "absolute",
               top: "10px",
               right: "10px",
-              background: "red",
+              background: "grey",
               color: "white",
               border: "none",
               borderRadius: "50%",

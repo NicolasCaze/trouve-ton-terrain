@@ -18,7 +18,8 @@ import Mimi from './assets/mimy.png';
 import felix from './assets/felix.png';
 import Nico from './assets/adventurer-1726698584777.png';
 import Asma from './assets/asma.png';
-import {Row,Col} from 'react-bootstrap'
+import Carousel from 'react-bootstrap/Carousel'
+import {Row, Col} from 'react-bootstrap'
 
 
 import Header from "./components/header";
@@ -228,24 +229,68 @@ function App() {
   return (
     <main>
       {/*<Header searchResults={filteredComplexe} />*/}
-      <div className="background-image">
-        <div className="overlay"></div>
-          <div className="header-content">
-            <Header
-              searchResults={filteredComplexe}
-              handleInputChange={handleInputChange}
-              uniqueRegions={uniqueRegions}
-              selectedRegion={selectedRegion}
-              handleRegionChange={handleRegionChange}
+          {/* Carousel Section */}
+          <div className="carousel-section">
+        <Carousel>
+          {/* Première image */}
+          <Carousel.Item interval={2000}>
+            <img
+              className="d-block"
+              src="/path-to-your-first-image.jpg"
+              alt="First slide"
+            
             />
-          </div>
+            <Carousel.Caption>
+              <h3>First Slide</h3>
+              <p>Discover amazing sports complexes near you!</p>
+            </Carousel.Caption>
+          </Carousel.Item>
 
-      </div>
+          {/* Deuxième image */}
+          <Carousel.Item interval={2000}>
+            <img
+              className="d-block"
+              src="/path-to-your-second-image.jpg"
+              alt="Second slide"
+           
+            />
+            <Carousel.Caption>
+              <h3>Second Slide</h3>
+              <p>Your guide to sports venues around the country!</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+
+          {/* Troisième image */}
+          <Carousel.Item interval={2000}>
+            <img
+              className="d-block"
+              src="/path-to-your-third-image.jpg"
+              alt="Third slide"
+              
+            />
+            <Carousel.Caption>
+              <h3>Third Slide</h3>
+              <p>Find your next sports adventure easily!</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+
+        {/* Votre contenu du Header sous le carousel */}
+        <div className="header-content">
+          <Header
+            searchResults={filteredComplexe}
+            handleInputChange={handleInputChange}
+            uniqueRegions={uniqueRegions}
+            selectedRegion={selectedRegion}
+            handleRegionChange={handleRegionChange}
+          />
+        </div>
+           </div>
       <div className="app-container">
 
         <div className="search-filter">
               <input
-                style={{ height: "35px", width: "400px" }}
+                style={{ height: "35px", width : "400px" }}
                 type="text"
                 value={searchItem}
                 onChange={handleInputChange}
@@ -336,6 +381,7 @@ function App() {
           </button>
         </div>
         <div className="team">
+          <h2> NOTRE EQUIPE</h2>
           <Row>
           <Equipe 
                 nom={"Nico"} 
@@ -359,7 +405,7 @@ function App() {
                 description={"zkenjnjkcjkjnjkdjdc"}
                 />
                 <Equipe 
-                nom={"Asma"} 
+                nom={"Petro"} 
                 fonction = "developpeur"
                 avatar={Asma}
                 description={"zkenjnjkcjkjnjkdjdc"}
