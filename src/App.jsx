@@ -27,33 +27,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const teamMembers = [
   {
     nom: "Nico",
-    fonction: "Développeur",
+    fonction: "Développeur Back-end (Scrum master)",
     avatar: Nico,
-    description: "Spécialiste en développement Back."
+    description: "Master 1 developpement Web "
   },
   {
     nom: "Mimy",
-    fonction: "Designer",
+    fonction: "Developpeur Front-end (UI design)",
     avatar: Mimi,
-    description: "Dev front end, design avec Figma"
+    description: "Bachelor 3 developpement Web"
   },
   {
     nom: "Felix",
-    fonction: "Developpeur Front",
+    fonction: "Developpeur Full-Stack (chef de projet)",
     avatar: felix,
-    description: "Dev front end"
+    description: "Master 1 developpement Web"
   },
   {
-    nom: "Petru",
-    fonction: "Data scientist",
+    nom: "Petro",
+    fonction: "Data analyst",
     avatar: Asma,
-    description: "Dev data"
+    description: "Bachelor 3 Data"
   },
   {
     nom: "Asma",
-    fonction: "Developpeur front",
+    fonction: "Developpeur front-end",
     avatar: Asma,
-    description: "Dev front"
+    description: "Master 1 developpement Web"
   }
   
 ];
